@@ -14,6 +14,10 @@ from phonenumbers import carrier, geocoder, phonenumberutil
 
 app = FastAPI(title="Phone Number Lookup API", version="1.0.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
 
 
 class PhoneResult(BaseModel):
