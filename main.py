@@ -29,7 +29,7 @@ async def _rate_limit(request):
         else: _rl_hits[ip] = {'s': now, 'c': 1}
     return True
 
-app = FastAPI(title="Phone Number Lookup API", version="1.0.0", dependencies=[Depends(_rate_limit)])
+app = FastAPI(title="Phone Number Lookup API", version="1.0.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 @app.api_route("/health", methods=["GET", "HEAD"])
