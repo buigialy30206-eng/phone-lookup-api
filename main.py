@@ -6,7 +6,7 @@ Returns: validity, country, carrier, number type, formatted output.
 
 from typing import Optional
 
-from fastapi import Query
+from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import phonenumbers
