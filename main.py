@@ -9,18 +9,15 @@ from typing import Optional
 from fastapi import Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from ratelimit import RateLimitMiddleware
 import phonenumbers
 from phonenumbers import carrier, geocoder, phonenumberutil
 
 app = FastAPI(title="Phone Number Lookup API", version="1.0.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
-app.add_middleware(RateLimitMiddleware)
 
 @app.api_route("/health", methods=["GET", "HEAD"])
 async def health():
     return {"status": "ok"}
-
 
 class PhoneResult(BaseModel):
     phone: str
@@ -49,8 +46,6 @@ TYPE_MAP = {
     phonenumberutil.PhoneNumberType.VOICEMAIL: "Voicemail",
     phonenumberutil.PhoneNumberType.UNKNOWN: "Unknown",
 }
-
-
 
 @app.get("/")
 async def root():
