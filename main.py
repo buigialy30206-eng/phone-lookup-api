@@ -14,7 +14,7 @@ from phonenumbers import carrier, geocoder, phonenumberutil
 
 app = FastAPI(title="Phone Number Lookup API", version="1.0.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 async def health():
     return {"status": "ok"}
 
@@ -50,7 +50,7 @@ TYPE_MAP = {
 }
 
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 async def health():
     return {"status": "ok", "library": "Google libphonenumber"}
 
