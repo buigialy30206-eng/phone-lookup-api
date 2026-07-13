@@ -49,7 +49,7 @@ TYPE_MAP = {
 
 @app.get("/")
 async def root():
-    return {"service": "Phone Number Lookup API", "version": "1.0.0"}
+    return {"service": "Phone Number Lookup API", "version": "1.0.0", "related": ["Email Validator API", "Places Search API"]}
 
 @app.get("/lookup", response_model=PhoneResult)
 async def lookup(
